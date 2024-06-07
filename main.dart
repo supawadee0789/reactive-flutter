@@ -15,6 +15,14 @@ Stream<int> getNumbersException() async* {
   }
 }
 
+Stream<int> getNumbersDuplicates() async* {
+  for (var i = 1; i <= 3; i++) {
+    yield i;
+    yield i;
+    await Future.delayed(Duration(seconds: 1));
+  }
+}
+
 Future<void> listen() async {
   getNumbers().listen((data) {
     print(data);
@@ -84,6 +92,12 @@ void takeWhile() {
   });
 }
 
+void distinct() {
+  getNumbersDuplicates().distinct().listen((item) {
+    print(item);
+  });
+}
+
 void main() {
   // listen();
   // awaitFor();
@@ -93,5 +107,6 @@ void main() {
   // skip();
   // skipWhile();
   // take();
-  takeWhile();
+  // takeWhile();
+  distinct();
 }
