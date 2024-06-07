@@ -27,6 +27,24 @@ Future<void> listen() async {
   });
 }
 
+void awaitFor() async {
+  var sum = 0;
+  await for (int number in getNumbers()) {
+    sum += number;
+  }
+  print(sum);
+}
+
+void isEmpty() async {
+  if (await getNumbers().isEmpty) {
+    print('stream is empty');
+  } else {
+    print('stream is not empty');
+  }
+}
+
 void main() {
-  listen();
+  // listen();
+  // awaitFor();
+  // isEmpty();
 }
