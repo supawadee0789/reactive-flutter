@@ -43,8 +43,55 @@ void isEmpty() async {
   }
 }
 
+void expand() {
+  getNumbers().expand((data) => [data, data * 10]).listen((item) {
+    print(item);
+  });
+}
+
+// Mutate data one-by-one
+void map() {
+  getNumbers().map((i) => i * 10).listen((item) {
+    print(item);
+  });
+}
+
+// Skip n elements from fist element
+void skip() {
+  getNumbers().skip(2).listen((item) {
+    print(item);
+  });
+}
+
+// Skip until condition return true
+void skipWhile() {
+  getNumbers().skipWhile((i) => i < 3).listen((item) {
+    print(item);
+  });
+}
+
+// Take only the first n elements
+void take() {
+  getNumbers().take(2).listen((item) {
+    print(item);
+  });
+}
+
+// Take item until condition return true
+void takeWhile() {
+  getNumbers().takeWhile((item) => item <= 2).listen((item) {
+    print(item);
+  });
+}
+
 void main() {
   // listen();
   // awaitFor();
   // isEmpty();
+  // expand();
+  // map();
+  // skip();
+  // skipWhile();
+  // take();
+  takeWhile();
 }
